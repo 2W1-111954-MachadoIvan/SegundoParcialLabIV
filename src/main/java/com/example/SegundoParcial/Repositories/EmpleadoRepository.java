@@ -4,6 +4,7 @@
  */
 package com.example.SegundoParcial.Repositories;
 
+import com.example.SegundoParcial.DTOs.DTOEmpleado;
 import com.example.SegundoParcial.Models.Empleado;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,22 +16,19 @@ import org.springframework.stereotype.Repository;
  * @author ivanm
  */
 @Repository
-public class EmpleadoRepository {
+public class EmpleadoRepository{
     
     @PersistenceContext
     private EntityManager em;
     
     
-    public List<Empleado> obtenerEmpleados(){
-        return em.createQuery("select e from Empleado e", Empleado.class).getResultList();
+    public List<DTOEmpleado> obtenerEmpleados() throws Exception{
+        return (List<DTOEmpleado>) em.createNativeQuery("SELECT Legajo, Nombre, Apellido, Fecha_Nacimiento, Fecha_Ingreso, ROUND(DATEDIFF(CURDATE(), Fecha_Ingreso)/365) AS Antiguedad, "
+            + "Area, Sueldo_Bruto FROM segundoparciallabiv.empleado;").getResultList();
     }
     
     public void crearEmpleado(Empleado empleado) throws Exception{
-        try{
-            em.persist(empleado);
-        } catch (Exception e){
-            throw new Exception(e);
-        }
+        em.persist(empleado);
     }
     
     

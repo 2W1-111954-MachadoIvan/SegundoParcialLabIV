@@ -32,13 +32,19 @@ import lombok.Setter;
 public class Recibo {
     @Id
     @GeneratedValue
-    @Column ( name = "")
+    @Column ( name = "Nro_Recibo")
     private int nroRecibo;
+    @Column ( name = "Mes")
     private int mes;
+    @Column ( name = "Anio")
     private int anio;
+    @Column ( name = "Antiguedad")
     private double antiguedad;
+    @Column ( name = "Jubilacion")
     private double jubilacion;
+    @Column ( name = "Obra_Social")
     private double obraSocial;
+    @Column ( name = "Fondo_Complejidad")
     private double fondoComplejidad;
     
     @ManyToOne(targetEntity = Empleado.class)

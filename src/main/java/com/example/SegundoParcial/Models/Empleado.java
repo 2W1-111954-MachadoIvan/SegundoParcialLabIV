@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -24,6 +25,7 @@ import lombok.Setter;
 @Setter
 @Getter 
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="empleado")
 public class Empleado {
@@ -46,5 +48,10 @@ public class Empleado {
     @OneToMany(targetEntity = Recibo.class, mappedBy = "empleado")
     @JsonManagedReference    
     private List<Recibo> recibos;
+    
+    public void addRecibo(Recibo recibo){
+        recibo.setEmpleado(this);
+        recibos.add(recibo);
+    }
     
 }

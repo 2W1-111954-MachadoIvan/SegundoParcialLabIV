@@ -4,28 +4,20 @@
  */
 package com.example.SegundoParcial.DTOs;
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-
 
 /**
  *
  * @author ivanm
  */
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class DTOEmpleado {
-    private int legajo;
-    private String nombre;
-    private String apellido;
-    private Date fechaNacimiento;
-    private int antiguedad;
+public class DTOSueldosAreas {
+    
     private String area;
-    private double sueldoBruto;
+    private double sueldoNeto;
     
 }

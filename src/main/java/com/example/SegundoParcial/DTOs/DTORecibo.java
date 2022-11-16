@@ -24,6 +24,6 @@ public class DTORecibo {
     private double jubilacion;
     private double obraSocial;
     private double fondoComplejidad;
-    private Empleado empleado;
+    private int legajo;
     
 }
